@@ -12,7 +12,7 @@ async def get_cv_response(query: str):
     load_dotenv()
     
     cv_path = os.getenv('CV_PATH')
-    conversation_chain = await setup_data(cv_path)
+    conversation_chain = await setup_data('../' + cv_path)
     return await process_query(query, conversation_chain)
 
 

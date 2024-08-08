@@ -1,6 +1,6 @@
 import os
 import glob
-from pypdf import PdfReader
+from PyPDF2 import PdfReader
 
 # Load pdf files data
 def load_pdfs(file_path):

@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
-from langchain.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
 
 def get_vector_store(text_chunks):
     load_dotenv()

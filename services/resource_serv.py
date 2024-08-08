@@ -8,12 +8,11 @@ from utils.csv_util import load_csv
 from utils.text_util import get_text_chunks
 from utils.embedding_util import get_vector_store
 
-async def get_query_response(query: str):
+async def get_resource_response(query: str):
     load_dotenv()
     
-    resource_path = os.getenv('CV_PATH')
-
-    conversation_chain = await setup_data(resource_path)
+    resource_path = os.getenv('RESOURCE_PATH')
+    conversation_chain = await setup_data('../' + resource_path)
     return await process_query(query, conversation_chain)
 
 
