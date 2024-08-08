@@ -1,0 +1,1 @@
+from controllers.resource_ctrl import app
