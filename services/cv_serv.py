@@ -4,24 +4,23 @@ from langchain_openai import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
-from utils.csv_util import load_csv
+from utils.pdf_util import load_pdfs
 from utils.text_util import get_text_chunks
 from utils.embedding_util import get_vector_store
 
-async def get_query_response(query: str):
+async def get_cv_response(query: str):
     load_dotenv()
     
-    resource_path = os.getenv('CV_PATH')
-
-    conversation_chain = await setup_data(resource_path)
+    cv_path = os.getenv('CV_PATH')
+    conversation_chain = await setup_data(cv_path)
     return await process_query(query, conversation_chain)
 
 
 # ---------------------- helper functions ------------------------------
 
 # Setup data
-async def setup_data(resource_path: str):
-    csv_data = load_csv(resource_path)
+async def setup_data(cv_path: str):
+    csv_data = load_pdfs(cv_path)
 
    # Extract text from DataFrame
     raw_text = "\n".join(csv_data.astype(str).values.flatten())
